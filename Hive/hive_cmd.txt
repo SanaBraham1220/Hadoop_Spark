@@ -1,0 +1,6 @@
+#Connect to Hive 
+hive
+# create database 
+create database hive_class_b1;
+# connect to the database 
+use hive_class_b1;
