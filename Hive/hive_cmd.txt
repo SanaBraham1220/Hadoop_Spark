@@ -1,6 +1,23 @@
-#Connect to Hive 
+# Connect to Hive 
 hive
-# create database 
+# Create database 
 create database hive_class_b1;
-# connect to the database 
+# Connect to the database 
 use hive_class_b1;
+# Create table in database
+create table department_data                                                                                                            
+    > (                                                                                                                                       
+    > dept_id int,                                                                                                                            
+    > dept_name string,                                                                                                                       
+    > manager_id int,                                                                                                                         
+    > salary int)                                                                                                                             
+    > row format delimited                                                                                                                    
+    > fields terminated by ','; 
+# Show tables
+show tables
+# Describe table
+describe department_data 
+describe formatted department_table ;
+                                                                                                           
+                                                                                                           
+

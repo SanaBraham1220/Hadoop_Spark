@@ -1,0 +1,52 @@
+# To list all the files in the direcotry
+ls 
+
+# To see all the list of file and directory in base direcotry of hadoop
+hadoop fs -ls /
+# or dfs distributed file system
+hdfs dfs -ls /
+
+# To create a new file vi file_name
+# i — Switch to Insert mode.
+# Esc — Switch to Command mode.
+# :w — Save and continue editing.
+# :wq — Save and quit/exit vi.
+vi testsana.txt
+
+# To copy testsana.txt from local to hadoop parent directory 
+hadoop fs -copyFromLocal testsana.txt
+
+# To delete a file
+rm testsana.txt
+
+# To move you test.txt from local to hadoop parent directory 
+hadoop fs -put testsana.txt / 
+
+# To move file from hadoop to local system 
+hadoop fs -get /testsana.txt / 
+
+# Rest of the linux command will work as it is in hadoop file system except vi
+
+# To ceate a new directory 
+mkdir test and rmdir test
+# To change a file name 
+mv test1.txt test2.txt
+# To delete a file 
+rm  test1.txt
+# To check a disk usases in your system 
+du 
+# To give all the privalages to a file 
+chmod 777 test.txt
+# To get into a superuser 
+sudo su 
+# To see all the command that you have executed 
+history
+# To see all the content in your file in console 
+cat test.txt
+# To see  see a last n number of line in file 
+tail -n test.txt
+
+
+
+
+ 
