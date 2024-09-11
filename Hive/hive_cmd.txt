@@ -1,10 +1,7 @@
-# Connect to Hive 
-hive
 # Create database 
-create database hive_class_b1;
-# Connect to the database 
-use hive_class_b1;
-# Create table in database
+use hive_class_batch1 ;
+
+# Create managed Table (internal)
 create table department_data                                                                                                            
     > (                                                                                                                                       
     > dept_id int,                                                                                                                            
@@ -13,11 +10,12 @@ create table department_data
     > salary int)                                                                                                                             
     > row format delimited                                                                                                                    
     > fields terminated by ','; 
-# Show tables
-show tables
-# Describe table
-describe department_data 
-describe formatted department_table ;
-                                                                                                           
-                                                                                                           
+
+# List tables created
+show tables ;
+
+# Describe table created
+describe table department_data ;
+or
+describe formatted table department_data ;
 
