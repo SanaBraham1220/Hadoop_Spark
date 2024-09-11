@@ -1,6 +1,9 @@
 # Create database 
 use hive_class_batch1 ;
 
+# Drop database cascade if database has tables
+drop database hive_class_b1 cascade
+
 # Create managed Table (internal)
 create table department_data                                                                                                            
     > (                                                                                                                                       
@@ -16,6 +19,59 @@ show tables ;
 
 # Describe table created
 describe table department_data ;
-or
+#or
 describe formatted table department_data ;
 
+# To quit hive
+exit ;
+
+# To mount shared folder windows to shared folder cloudera
+su
+mount -t vboxsf shared_folder shared 
+
+# Load data from local file to table 
+load data local inpath  'file:///tmp/hive_class/depart_data.csv' into table department_data ;
+
+# To display columns as headers , to do each time when we restart hive
+set hive.cli.print.header = true ;
+
+# Load data from hdfs file to table 
+load data local inpath  'file:///tmp/hive_class/depart_data.csv' into table department_data ;
+
+# Load data from hdfs location without the local word and without mention file name
+load data inpath '/tmp/hive_data_class_2/' into table department_data_from_hdfs;
+
+# Create external Table
+create external table department_data                                                                                                            
+    > (                                                                                                                                       
+    > dept_id int,                                                                                                                            
+    > dept_name string,                                                                                                                       
+    > manager_id int,                                                                                                                         
+    > salary int)                                                                                                                             
+    > row format delimited                                                                                                                    
+    > fields terminated by ','                                                                                                                                                                                                                             
+    > location '/tmp/hive_class'; 
+
+# Work with Array data types
+create table employee (
+    > id int,
+    > name string,
+    > skills array<string>
+    > )
+    > row format delimited
+    > fields terminated by ','
+    > collection items terminated by ':';
+
+load data local inpath 'file:///tmp/hive_class/array_data.csv' into table employee; 
+
+# Get element by index in hive array data type
+select id, name, skills[0] as prime_skill from employee;
+
+# size,array_contains,sort_array functions
+select                                                                                                                                  
+    > id,                                                                                                                                     
+    > name,                                                                                                                                   
+    > size(skills) as size_of_each_array,                                                                                                     
+    > array_contains(skills,"HADOOP") as knows_hadoop,                                                                                        
+    > sort_array(skills) as sorted_array                                                                                                                     
+    > from employee; 
